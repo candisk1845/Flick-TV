@@ -115,7 +115,8 @@ export default function IPTVApp() {
   }
 
   return (
-    <div className="h-screen bg-gray-900 text-white flex overflow-hidden">
+    <div className="h-screen bg-gray-900 text-white flex overflow-hidden flex-col">
+      <div className="flex-1 flex overflow-hidden">
       {/* Mobile Header */}
       <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-gray-900 border-b border-gray-700 p-4">
         <div className="flex items-center justify-between">
@@ -213,6 +214,7 @@ export default function IPTVApp() {
           onClick={toggleSidebar}
         />
       )}
+      </div>
     </div>
   );
 }

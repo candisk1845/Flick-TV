@@ -65,6 +65,9 @@ export default function VideoPlayer({ channel, onChannelChange, className = '' }
         hlsRef.current = null;
       }
 
+      // Use direct URL - streams load directly from browser
+      const directUrl = streamUrl;
+
       if (Hls.isSupported()) {
         const hls = new Hls({
           enableWorker: true,
@@ -84,7 +87,7 @@ export default function VideoPlayer({ channel, onChannelChange, className = '' }
 
         hlsRef.current = hls;
 
-        hls.loadSource(streamUrl);
+        hls.loadSource(directUrl);
         hls.attachMedia(videoRef.current);
 
         hls.on(Hls.Events.MANIFEST_PARSED, () => {

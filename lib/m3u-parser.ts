@@ -18,7 +18,11 @@ export interface ParsedPlaylist {
 export class M3UParser {
   static async parseFromUrl(url: string): Promise<ParsedPlaylist> {
     try {
-      const response = await fetch(url);
+      // Fetch directly from client - no proxy
+      const response = await fetch(url, {
+        mode: 'cors',
+        credentials: 'omit',
+      });
       const content = await response.text();
       return this.parseFromContent(content);
     } catch (error) {

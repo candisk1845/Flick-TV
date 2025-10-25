@@ -1,0 +1,18 @@
+# Cloudflare Pages configuration
+# This allows the app to work with HTTP streams
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Disable automatic HTTPS redirect
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "upgrade-insecure-requests"
+    X-Content-Type-Options = "nosniff"
